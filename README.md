@@ -10,7 +10,7 @@ The virtual hosts are held in the VIRTUAL_HOST Env Var of the proxied container.
 
 `docker pull hardillb/nginx-proxy-avahi-helper`
 
-Currently only runs on ARM64 based machines, need to do AMD64 builds.
+Currently there are AMD64 and  ARM64 based builds.
 
 ## Running
 
