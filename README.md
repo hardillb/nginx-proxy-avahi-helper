@@ -1,7 +1,7 @@
 # nginx-proxy-avahi-helper
 
 A docker container to generate mDNS CNAME entries for the virtual hosts
-used by jwilder/nginx-proxy.
+used by [jwilder/nginx-proxy](https://github.com/nginx-proxy/nginx-proxy).
 
 The virtual hosts are held in the VIRTUAL_HOST Env Var of the proxied container.
 
