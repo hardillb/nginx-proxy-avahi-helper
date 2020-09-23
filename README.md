@@ -33,3 +33,7 @@ If you are running on system with AppArmor installed you may get errors about no
 `--priviledged` to the command line.
 
 This is a temp workaround until I can work out a suitable policy to apply.
+
+## Acknowledgment
+
+This uses and borrows heavily from [mdns-publisher](https://github.com/alticelabs/mdns-publisher)
