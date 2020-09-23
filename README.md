@@ -26,3 +26,10 @@ This allows the container to monitor docker
 And this allows the container to send d-bus commands to the host OS's Avahi daemon
 
 `docker run -d -v /var/run/docker.sock:/tmp/docker.sock -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket hardillb/nginx-proxy-avahi-helper`
+
+## AppArmor
+
+If you are running on system with AppArmor installed you may get errors about not being able to send d-bus messages. To fix this add
+`--priviledged` to the command line.
+
+This is a temp workaround until I can work out a suitable policy to apply.
