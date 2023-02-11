@@ -33,7 +33,7 @@ RUN git clone https://github.com/nginx-proxy/forego/ \
    && rm -rf /go/forego
 
 
-FROM python:3.8.5-buster
+FROM python:3.9.16-bullseye
 LABEL maintainer="Ben Hardill hardillb@gmail.com"
 
 RUN apt-get update && apt-get install -y build-essential ninja-build patchelf cmake libdbus-1-dev libdbus-glib-1-dev \
