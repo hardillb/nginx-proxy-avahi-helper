@@ -53,5 +53,4 @@ RUN pip install mdns-publisher
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
-# CMD ["forego", "start", "-r"]
-ENTRYPOINT ["bash"]
+CMD ["forego", "start", "-r"]
