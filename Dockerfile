@@ -36,7 +36,7 @@ RUN git clone https://github.com/nginx-proxy/forego/ \
 FROM python:3.8.5-buster
 LABEL maintainer="Ben Hardill hardillb@gmail.com"
 
-RUN apt-get update && apt-get install -y libdbus-1-dev libdbus-glib-1-dev \
+RUN apt-get update && apt-get install -y build-essential libdbus-1-dev libdbus-glib-1-dev \
 && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
@@ -49,7 +49,7 @@ COPY avahi.tmpl .
 COPY cname.py .
 COPY restart.sh .
 
-RUN pip install mdns-publisher
+RUN pip install ninja patchelf mdns-publisher
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
