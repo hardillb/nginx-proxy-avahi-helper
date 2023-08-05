@@ -48,6 +48,7 @@ COPY Procfile .
 COPY avahi.tmpl .
 COPY cname.py .
 COPY restart.sh .
+RUN touch ./cnames
 
 RUN pip install mdns-publisher
 
