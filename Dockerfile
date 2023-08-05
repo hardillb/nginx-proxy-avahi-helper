@@ -36,7 +36,7 @@ RUN git clone https://github.com/nginx-proxy/forego/ \
 FROM python:3.11.4-slim-bullseye
 LABEL maintainer="Ben Hardill hardillb@gmail.com"
 
-RUN apt-get update && apt-get install -y build-essential ninja-build patchelf cmake libdbus-1-dev libdbus-glib-1-dev \
+RUN apt-get update && apt-get install -y gcc libdbus-1-dev libdbus-glib-1-dev \
 && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
