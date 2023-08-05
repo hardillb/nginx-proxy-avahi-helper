@@ -33,11 +33,8 @@ RUN git clone https://github.com/nginx-proxy/forego/ \
    && rm -rf /go/forego
 
 
-FROM python:3.11.4-slim-bullseye
+FROM python:3.11-slim-bullseye
 LABEL maintainer="Ben Hardill hardillb@gmail.com"
-
-RUN apt-get update && apt-get install -y gcc libdbus-1-dev libdbus-glib-1-dev \
-&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
 
@@ -49,8 +46,6 @@ COPY avahi.tmpl .
 COPY cname.py .
 COPY restart.sh .
 RUN touch ./cnames
-
-RUN pip install mdns-publisher
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
