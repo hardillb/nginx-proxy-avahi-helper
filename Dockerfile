@@ -1,5 +1,5 @@
 ARG DOCKER_GEN_VERSION=0.10.6
-ARG FOREGO_VERSION=v0.17.0
+ARG FOREGO_VERSION=v0.17.2
 
 FROM golang:1.20 as gobuilder
 
@@ -33,7 +33,7 @@ RUN git clone https://github.com/nginx-proxy/forego/ \
    && rm -rf /go/forego
 
 
-FROM python:3.9.16-bullseye
+FROM python:3.11.4-slim-bullseye
 LABEL maintainer="Ben Hardill hardillb@gmail.com"
 
 RUN apt-get update && apt-get install -y build-essential ninja-build patchelf cmake libdbus-1-dev libdbus-glib-1-dev \
