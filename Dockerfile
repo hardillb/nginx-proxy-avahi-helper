@@ -1,5 +1,6 @@
 ARG DOCKER_GEN_VERSION=0.10.6
 ARG FOREGO_VERSION=v0.17.2
+ARG PYTHON_VER=3.11
 
 FROM golang:1.20 as gobuilder
 
@@ -32,14 +33,21 @@ RUN git clone https://github.com/nginx-proxy/forego/ \
    && cd - \
    && rm -rf /go/forego
 
+FROM python:${PYTHON_VER} as pythonbuilder
+RUN apt-get update && apt-get install -y build-essential libdbus-1-dev
+RUN pip install mdns-publisher
 
-FROM python:3.11-slim-bullseye
+FROM python:${PYTHON_VER}-slim
 LABEL maintainer="Ben Hardill hardillb@gmail.com"
+ARG PYTHON_VER
 
-WORKDIR /usr/src/app
+RUN apt-get update && apt-get install -y libdbus-1-3 && rm -rf /var/lib/apt/lists/*
 
 COPY --from=forego /usr/local/bin/forego /usr/local/bin/forego
 COPY --from=dockergen /usr/local/bin/docker-gen  /usr/local/bin/docker-gen
+COPY --from=pythonbuilder /usr/local/lib/python${PYTHON_VER}/site-packages/ /usr/local/lib/python${PYTHON_VER}/site-packages/
+
+WORKDIR /usr/src/app
 
 COPY Procfile .
 COPY avahi.tmpl .
