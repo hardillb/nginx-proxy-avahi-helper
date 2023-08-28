@@ -34,7 +34,7 @@ RUN git clone https://github.com/nginx-proxy/forego/ \
    && rm -rf /go/forego
 
 FROM python:${PYTHON_VER} as pythonbuilder
-RUN apt-get update && apt-get install -y build-essential libdbus-1-dev
+RUN apt-get update && apt-get install -y build-essential libdbus-1-dev cmake
 RUN pip install mdns-publisher
 
 FROM python:${PYTHON_VER}-slim
